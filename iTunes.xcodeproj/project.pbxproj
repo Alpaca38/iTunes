@@ -9,16 +9,21 @@
 /* Begin PBXBuildFile section */
 		D16D8D4C2C6485AC00AF7677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */; };
 		D16D8D4E2C6485AC00AF7677 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */; };
-		D16D8D502C6485AC00AF7677 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4F2C6485AC00AF7677 /* ViewController.swift */; };
+		D16D8D502C6485AC00AF7677 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */; };
 		D16D8D552C6485AD00AF7677 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16D8D542C6485AD00AF7677 /* Assets.xcassets */; };
 		D16D8D582C6485AD00AF7677 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D16D8D572C6485AD00AF7677 /* Base */; };
+		D16D8D612C648FED00AF7677 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D16D8D602C648FED00AF7677 /* RxCocoa */; };
+		D16D8D632C648FED00AF7677 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D16D8D622C648FED00AF7677 /* RxSwift */; };
+		D16D8D662C648FF700AF7677 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D16D8D652C648FF700AF7677 /* SnapKit */; };
+		D16D8D692C64908100AF7677 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D16D8D682C64908100AF7677 /* Kingfisher */; };
+		D16D8D6C2C6490AE00AF7677 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D16D8D6B2C6490AE00AF7677 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D16D8D482C6485AC00AF7677 /* iTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D16D8D4F2C6485AC00AF7677 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D16D8D542C6485AD00AF7677 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D16D8D572C6485AD00AF7677 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D16D8D592C6485AD00AF7677 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +34,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16D8D692C64908100AF7677 /* Kingfisher in Frameworks */,
+				D16D8D662C648FF700AF7677 /* SnapKit in Frameworks */,
+				D16D8D632C648FED00AF7677 /* RxSwift in Frameworks */,
+				D16D8D6C2C6490AE00AF7677 /* RealmSwift in Frameworks */,
+				D16D8D612C648FED00AF7677 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +66,7 @@
 			children = (
 				D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */,
 				D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */,
-				D16D8D4F2C6485AC00AF7677 /* ViewController.swift */,
+				D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */,
 				D16D8D542C6485AD00AF7677 /* Assets.xcassets */,
 				D16D8D562C6485AD00AF7677 /* LaunchScreen.storyboard */,
 				D16D8D592C6485AD00AF7677 /* Info.plist */,
@@ -80,6 +90,13 @@
 			dependencies = (
 			);
 			name = iTunes;
+			packageProductDependencies = (
+				D16D8D602C648FED00AF7677 /* RxCocoa */,
+				D16D8D622C648FED00AF7677 /* RxSwift */,
+				D16D8D652C648FF700AF7677 /* SnapKit */,
+				D16D8D682C64908100AF7677 /* Kingfisher */,
+				D16D8D6B2C6490AE00AF7677 /* RealmSwift */,
+			);
 			productName = iTunes;
 			productReference = D16D8D482C6485AC00AF7677 /* iTunes.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +125,12 @@
 				Base,
 			);
 			mainGroup = D16D8D3F2C6485AC00AF7677;
+			packageReferences = (
+				D16D8D5F2C648FED00AF7677 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				D16D8D642C648FF700AF7677 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D16D8D672C64908100AF7677 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D16D8D6A2C6490AE00AF7677 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = D16D8D492C6485AC00AF7677 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,7 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D16D8D502C6485AC00AF7677 /* ViewController.swift in Sources */,
+				D16D8D502C6485AC00AF7677 /* SearchViewController.swift in Sources */,
 				D16D8D4C2C6485AC00AF7677 /* AppDelegate.swift in Sources */,
 				D16D8D4E2C6485AC00AF7677 /* SceneDelegate.swift in Sources */,
 			);
@@ -357,6 +380,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D16D8D5F2C648FED00AF7677 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		D16D8D642C648FF700AF7677 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		D16D8D672C64908100AF7677 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		D16D8D6A2C6490AE00AF7677 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.52.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D16D8D602C648FED00AF7677 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D16D8D5F2C648FED00AF7677 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		D16D8D622C648FED00AF7677 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D16D8D5F2C648FED00AF7677 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		D16D8D652C648FF700AF7677 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D16D8D642C648FF700AF7677 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		D16D8D682C64908100AF7677 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D16D8D672C64908100AF7677 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		D16D8D6B2C6490AE00AF7677 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D16D8D6A2C6490AE00AF7677 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D16D8D402C6485AC00AF7677 /* Project object */;
 }
