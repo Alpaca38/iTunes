@@ -14,7 +14,6 @@ final class SearchTableViewCell: BaseTableViewCell {
         let view = UIImageView()
         view.layer.cornerRadius = 10
         view.contentMode = .scaleAspectFit
-        view.backgroundColor = .lightGray // test
         return view
     }()
     
@@ -76,19 +75,17 @@ final class SearchTableViewCell: BaseTableViewCell {
             $0.leading.equalTo(starImageView.snp.trailing).offset(5)
             $0.centerY.equalTo(starImageView)
         }
-        ratingLabel.text = "4.7" // dummy
         
         sellerLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalTo(starImageView)
+            $0.width.equalTo(UIScreen.main.bounds.width - 180)
         }
-        sellerLabel.text = "Kakao Corp." // dummy
         
         genreLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().offset(-20)
             $0.centerY.equalTo(starImageView)
         }
-        genreLabel.text = "네비게이션" // dummy
         
         firstScreenshotImageView.snp.makeConstraints {
             $0.top.equalTo(starImageView.snp.bottom).offset(10)
@@ -133,13 +130,19 @@ final class SearchTableViewCell: BaseTableViewCell {
         
         genreLabel.text = data.genres.first
         
-        let firstScreenshotURL = URL(string: data.screenshotUrls[0])
-        firstScreenshotImageView.kf.setImage(with: firstScreenshotURL)
+        if data.screenshotUrls.indices.contains(0) {
+            let firstScreenshotURL = URL(string: data.screenshotUrls[0])
+            firstScreenshotImageView.kf.setImage(with: firstScreenshotURL)
+        }
         
-        let secondScreenshotURL = URL(string: data.screenshotUrls[1])
-        secondScreenshotImageView.kf.setImage(with: secondScreenshotURL)
+        if data.screenshotUrls.indices.contains(1) {
+            let secondScreenshotURL = URL(string: data.screenshotUrls[1])
+            secondScreenshotImageView.kf.setImage(with: secondScreenshotURL)
+        }
         
-        let thirdScreenshotURL = URL(string: data.screenshotUrls[2])
-        thirdScreenshotImageView.kf.setImage(with: thirdScreenshotURL)
+        if data.screenshotUrls.indices.contains(2) {
+            let thirdScreenshotURL = URL(string: data.screenshotUrls[2])
+            thirdScreenshotImageView.kf.setImage(with: thirdScreenshotURL)
+        }
     }
 }

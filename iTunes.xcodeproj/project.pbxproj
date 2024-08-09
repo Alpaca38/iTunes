@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D11D80552C65947300EB8680 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80542C65947300EB8680 /* ViewModelType.swift */; };
+		D11D80572C659DEA00EB8680 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80562C659DEA00EB8680 /* SearchDetailViewController.swift */; };
 		D16D8D4C2C6485AC00AF7677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */; };
 		D16D8D4E2C6485AC00AF7677 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */; };
 		D16D8D502C6485AC00AF7677 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		D11D80542C65947300EB8680 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		D11D80562C659DEA00EB8680 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		D16D8D482C6485AC00AF7677 /* iTunesSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				D16D8D762C64995800AF7677 /* Cell */,
 				D16D8D742C64975E00AF7677 /* TabBarController.swift */,
 				D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */,
+				D11D80562C659DEA00EB8680 /* SearchDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D16D8D862C64AE1200AF7677 /* Software.swift in Sources */,
+				D11D80572C659DEA00EB8680 /* SearchDetailViewController.swift in Sources */,
 				D16D8D7A2C64996B00AF7677 /* BaseTableViewCell.swift in Sources */,
 				D16D8D832C64AA9D00AF7677 /* ScreenShotImageView.swift in Sources */,
 				D16D8D882C64B31800AF7677 /* NetworkManager.swift in Sources */,

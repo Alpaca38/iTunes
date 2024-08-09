@@ -27,4 +27,8 @@ struct SoftwareResult: Decodable {
     var rating: String {
         return averageUserRating.formatted(.number.precision(.fractionLength(1)))
     }
+    
+    var versionLabel: String {
+        return "버전 \(version)"
+    }
 }
