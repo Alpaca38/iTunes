@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class SearchTableViewCell: BaseTableViewCell {
     private let appIconImageView = {
@@ -120,7 +121,25 @@ final class SearchTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configure(data: String) {
-        titleLabel.text = data
+    func configure(data: SoftwareResult) {
+        let appIconURL = URL(string: data.artworkUrl60)
+        appIconImageView.kf.setImage(with: appIconURL)
+        
+        titleLabel.text = data.trackName
+        
+        ratingLabel.text = data.rating
+        
+        sellerLabel.text = data.sellerName
+        
+        genreLabel.text = data.genres.first
+        
+        let firstScreenshotURL = URL(string: data.screenshotUrls[0])
+        firstScreenshotImageView.kf.setImage(with: firstScreenshotURL)
+        
+        let secondScreenshotURL = URL(string: data.screenshotUrls[1])
+        secondScreenshotImageView.kf.setImage(with: secondScreenshotURL)
+        
+        let thirdScreenshotURL = URL(string: data.screenshotUrls[2])
+        thirdScreenshotImageView.kf.setImage(with: thirdScreenshotURL)
     }
 }

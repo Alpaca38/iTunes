@@ -11,6 +11,7 @@ final class ScreenShotImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentMode = .scaleAspectFill
+        clipsToBounds = true
         backgroundColor = .lightGray
         layer.cornerRadius = 10
     }

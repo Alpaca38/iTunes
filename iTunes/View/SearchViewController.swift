@@ -20,7 +20,7 @@ class SearchViewController: BaseViewController {
         return view
     }()
     
-    private let list = Observable.just(["카카오 T - 택시, 대리, 주차, 어쩌고, 저쩌고", "카카오맵 - 대한민국 No.1 어쩌고 저쩌고 어쩌고"])
+    private let viewModel = SearchViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +45,7 @@ private extension SearchViewController {
     }
     
     func setSearchController() {
-        searchController.searchBar.placeholder = "사진을 검색할 수 있습니다."
-        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -55,17 +54,17 @@ private extension SearchViewController {
 // MARK: Data Bind
 private extension SearchViewController {
     func bind() {
+        let input = SearchViewModel.Input(
+            searchTap: searchController.searchBar.rx.searchButtonClicked,
+            searchText: searchController.searchBar.rx.text.orEmpty)
+        
+        let output = viewModel.transform(input: input)
+        
         disposeBag.insert {
-            list
+            output.list
                 .bind(to: tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { row, element, cell in
                     cell.configure(data: element)
                 }
         }
-    }
-}
-
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(#function)
     }
 }

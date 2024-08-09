@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D11D80552C65947300EB8680 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80542C65947300EB8680 /* ViewModelType.swift */; };
 		D16D8D4C2C6485AC00AF7677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */; };
 		D16D8D4E2C6485AC00AF7677 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */; };
 		D16D8D502C6485AC00AF7677 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */; };
@@ -25,10 +26,15 @@
 		D16D8D7E2C649C7D00AF7677 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D7D2C649C7D00AF7677 /* Extension+UIView.swift */; };
 		D16D8D812C64A1FB00AF7677 /* SecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D802C64A1FB00AF7677 /* SecondaryLabel.swift */; };
 		D16D8D832C64AA9D00AF7677 /* ScreenShotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D822C64AA9D00AF7677 /* ScreenShotImageView.swift */; };
+		D16D8D862C64AE1200AF7677 /* Software.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D852C64AE1200AF7677 /* Software.swift */; };
+		D16D8D882C64B31800AF7677 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D872C64B31800AF7677 /* NetworkManager.swift */; };
+		D16D8D8A2C64B35400AF7677 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D892C64B35400AF7677 /* APIError.swift */; };
+		D16D8D8D2C64B60400AF7677 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16D8D8C2C64B60400AF7677 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D16D8D482C6485AC00AF7677 /* iTunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11D80542C65947300EB8680 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		D16D8D482C6485AC00AF7677 /* iTunesSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16D8D4B2C6485AC00AF7677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D16D8D4D2C6485AC00AF7677 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D16D8D4F2C6485AC00AF7677 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +49,10 @@
 		D16D8D7D2C649C7D00AF7677 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		D16D8D802C64A1FB00AF7677 /* SecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabel.swift; sourceTree = "<group>"; };
 		D16D8D822C64AA9D00AF7677 /* ScreenShotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotImageView.swift; sourceTree = "<group>"; };
+		D16D8D852C64AE1200AF7677 /* Software.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Software.swift; sourceTree = "<group>"; };
+		D16D8D872C64B31800AF7677 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D16D8D892C64B35400AF7677 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		D16D8D8C2C64B60400AF7677 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D11D80532C65945D00EB8680 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D16D8D712C6491F800AF7677 /* ReuseIdentifier.swift */,
+				D11D80542C65947300EB8680 /* ViewModelType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		D16D8D3F2C6485AC00AF7677 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +91,7 @@
 		D16D8D492C6485AC00AF7677 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D16D8D482C6485AC00AF7677 /* iTunes.app */,
+				D16D8D482C6485AC00AF7677 /* iTunesSearch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +99,9 @@
 		D16D8D4A2C6485AC00AF7677 /* iTunes */ = {
 			isa = PBXGroup;
 			children = (
+				D11D80532C65945D00EB8680 /* Protocol */,
+				D16D8D8B2C64B5FC00AF7677 /* ViewModel */,
+				D16D8D842C64ADFD00AF7677 /* Model */,
 				D16D8D732C64974500AF7677 /* View */,
 				D16D8D702C6491EA00AF7677 /* Extension */,
 				D16D8D6D2C64919C00AF7677 /* Base */,
@@ -104,7 +126,6 @@
 		D16D8D702C6491EA00AF7677 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D16D8D712C6491F800AF7677 /* ReuseIdentifier.swift */,
 				D16D8D7D2C649C7D00AF7677 /* Extension+UIView.swift */,
 			);
 			path = Extension;
@@ -138,12 +159,30 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		D16D8D842C64ADFD00AF7677 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D16D8D852C64AE1200AF7677 /* Software.swift */,
+				D16D8D872C64B31800AF7677 /* NetworkManager.swift */,
+				D16D8D892C64B35400AF7677 /* APIError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D16D8D8B2C64B5FC00AF7677 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D16D8D8C2C64B60400AF7677 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D16D8D472C6485AC00AF7677 /* iTunes */ = {
+		D16D8D472C6485AC00AF7677 /* iTunesSearch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D16D8D5C2C6485AD00AF7677 /* Build configuration list for PBXNativeTarget "iTunes" */;
+			buildConfigurationList = D16D8D5C2C6485AD00AF7677 /* Build configuration list for PBXNativeTarget "iTunesSearch" */;
 			buildPhases = (
 				D16D8D442C6485AC00AF7677 /* Sources */,
 				D16D8D452C6485AC00AF7677 /* Frameworks */,
@@ -153,7 +192,7 @@
 			);
 			dependencies = (
 			);
-			name = iTunes;
+			name = iTunesSearch;
 			packageProductDependencies = (
 				D16D8D602C648FED00AF7677 /* RxCocoa */,
 				D16D8D622C648FED00AF7677 /* RxSwift */,
@@ -162,7 +201,7 @@
 				D16D8D6B2C6490AE00AF7677 /* RealmSwift */,
 			);
 			productName = iTunes;
-			productReference = D16D8D482C6485AC00AF7677 /* iTunes.app */;
+			productReference = D16D8D482C6485AC00AF7677 /* iTunesSearch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +238,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D16D8D472C6485AC00AF7677 /* iTunes */,
+				D16D8D472C6485AC00AF7677 /* iTunesSearch */,
 			);
 		};
 /* End PBXProject section */
@@ -221,17 +260,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16D8D862C64AE1200AF7677 /* Software.swift in Sources */,
 				D16D8D7A2C64996B00AF7677 /* BaseTableViewCell.swift in Sources */,
 				D16D8D832C64AA9D00AF7677 /* ScreenShotImageView.swift in Sources */,
+				D16D8D882C64B31800AF7677 /* NetworkManager.swift in Sources */,
 				D16D8D502C6485AC00AF7677 /* SearchViewController.swift in Sources */,
 				D16D8D6F2C6491AD00AF7677 /* BaseViewController.swift in Sources */,
+				D16D8D8D2C64B60400AF7677 /* SearchViewModel.swift in Sources */,
 				D16D8D4C2C6485AC00AF7677 /* AppDelegate.swift in Sources */,
 				D16D8D752C64975E00AF7677 /* TabBarController.swift in Sources */,
 				D16D8D722C6491F800AF7677 /* ReuseIdentifier.swift in Sources */,
 				D16D8D4E2C6485AC00AF7677 /* SceneDelegate.swift in Sources */,
 				D16D8D812C64A1FB00AF7677 /* SecondaryLabel.swift in Sources */,
+				D11D80552C65947300EB8680 /* ViewModelType.swift in Sources */,
 				D16D8D782C64995F00AF7677 /* SearchTableViewCell.swift in Sources */,
 				D16D8D7E2C649C7D00AF7677 /* Extension+UIView.swift in Sources */,
+				D16D8D8A2C64B35400AF7677 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,17 +421,19 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iTunes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iTunesSearch;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Jo.iTunes;
+				PRODUCT_BUNDLE_IDENTIFIER = Jo.iTunesSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -408,17 +454,19 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iTunes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iTunesSearch;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Jo.iTunes;
+				PRODUCT_BUNDLE_IDENTIFIER = Jo.iTunesSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -442,7 +490,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D16D8D5C2C6485AD00AF7677 /* Build configuration list for PBXNativeTarget "iTunes" */ = {
+		D16D8D5C2C6485AD00AF7677 /* Build configuration list for PBXNativeTarget "iTunesSearch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D16D8D5D2C6485AD00AF7677 /* Debug */,
