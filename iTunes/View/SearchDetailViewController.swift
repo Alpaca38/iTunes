@@ -63,6 +63,21 @@ final class SearchDetailViewController: BaseViewController {
         return view
     }()
     
+    private lazy var scrollView = {
+        let view = UIScrollView()
+        view.addSubview(contentView)
+        view.alwaysBounceVertical = true
+        view.showsVerticalScrollIndicator = false
+        self.view.addSubview(view)
+        return view
+    }()
+    
+    private lazy var contentView = {
+        let view = UIView()
+        view.addSubViews(views: [appIconImageView, titleLabel, sellerLabel, downloadButton, newInfoLabel, versionLabel, releaseNotesLabel, descriptionLabel])
+        return view
+    }()
+    
     private let viewModel: SearchDetailViewModel
     
     init(viewModel: SearchDetailViewModel) {
@@ -82,10 +97,17 @@ final class SearchDetailViewController: BaseViewController {
     }
     
     override func configureLayout() {
-        view.addSubViews(views: [appIconImageView, titleLabel, sellerLabel, downloadButton, newInfoLabel, versionLabel, releaseNotesLabel, descriptionLabel])
+        scrollView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         
         appIconImageView.snp.makeConstraints {
-            $0.top.leading.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.top.leading.equalToSuperview().offset(20)
             $0.size.equalTo(100)
         }
         
@@ -126,8 +148,7 @@ final class SearchDetailViewController: BaseViewController {
         
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(releaseNotesLabel.snp.bottom).offset(20)
-            $0.leading.equalTo(appIconImageView)
-            $0.trailing.equalTo(releaseNotesLabel)
+            $0.horizontalEdges.bottom.equalToSuperview().inset(20)
         }
     }
     
