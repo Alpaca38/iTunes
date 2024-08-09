@@ -22,7 +22,7 @@ struct SoftwareResult: Decodable, Hashable {
     let artworkUrl60, artworkUrl100: String
     let artworkUrl512: String?
     let version: String
-    let releaseNotes: String
+    let releaseNotes: String?
     
     var rating: String {
         return averageUserRating.formatted(.number.precision(.fractionLength(1)))
