@@ -10,6 +10,8 @@ import SnapKit
 import Kingfisher
 
 final class SearchDetailViewController: BaseViewController {
+    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    
     private let appIconImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 10
@@ -49,10 +51,16 @@ final class SearchDetailViewController: BaseViewController {
     }()
     
     private let versionLabel = SecondaryLabel()
+    
     private let releaseNotesLabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 15)
         view.numberOfLines = 0
+        return view
+    }()
+    
+    private lazy var collectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         return view
     }()
     
@@ -74,7 +82,7 @@ final class SearchDetailViewController: BaseViewController {
     
     private lazy var contentView = {
         let view = UIView()
-        view.addSubViews(views: [appIconImageView, titleLabel, sellerLabel, downloadButton, newInfoLabel, versionLabel, releaseNotesLabel, descriptionLabel])
+        view.addSubViews(views: [appIconImageView, titleLabel, sellerLabel, downloadButton, newInfoLabel, versionLabel, releaseNotesLabel, collectionView, descriptionLabel])
         return view
     }()
     
@@ -89,6 +97,8 @@ final class SearchDetailViewController: BaseViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
         configure(data: viewModel.softwareData)
+        configureDataSource()
+        updateSnapshot()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -146,8 +156,14 @@ final class SearchDetailViewController: BaseViewController {
             $0.trailing.equalToSuperview().offset(-20)
         }
         
-        descriptionLabel.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(releaseNotesLabel.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(580)
+        }
+        
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom).offset(20)
             $0.horizontalEdges.bottom.equalToSuperview().inset(20)
         }
     }
@@ -171,5 +187,51 @@ private extension SearchDetailViewController {
         releaseNotesLabel.text = data.releaseNotes
         
         descriptionLabel.text = data.description
+    }
+}
+
+// MARK: CollectiovView Layout
+private extension SearchDetailViewController {
+    func createLayout() -> UICollectionViewLayout {
+        UICollectionViewCompositionalLayout(section: createSection())
+    }
+    
+    func createSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8),
+                                               heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(8)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
+        section.interGroupSpacing = 8
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        return section
+    }
+}
+
+// MARK: DataSource
+private extension SearchDetailViewController {
+    func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<ScreenshotCollectionViewCell, String> { cell, indexPath, itemIdentifier in
+            cell.configure(screenshotURL: itemIdentifier)
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+        })
+    }
+    
+    func updateSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.softwareData.screenshotUrls, toSection: 0)
+        
+        dataSource.apply(snapshot)
     }
 }

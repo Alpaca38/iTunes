@@ -12,7 +12,7 @@ struct Software: Decodable {
     let results: [SoftwareResult]
 }
 
-struct SoftwareResult: Decodable {
+struct SoftwareResult: Decodable, Hashable {
     let trackName: String
     let screenshotUrls: [String]
     let averageUserRating: Double
