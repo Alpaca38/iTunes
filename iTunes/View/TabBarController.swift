@@ -13,9 +13,12 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = .systemBlue
         tabBar.unselectedItemTintColor = .gray
         
-        let search = UINavigationController(rootViewController: SearchViewController())
-        search.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        let saved = UINavigationController(rootViewController: SavedSoftwareViewController())
+        saved.tabBarItem = UITabBarItem(title: "앱", image: UIImage(systemName: "square.stack.3d.up.fill"), tag: 0)
         
-        setViewControllers([search], animated: true)
+        let search = UINavigationController(rootViewController: SearchViewController())
+        search.tabBarItem = UITabBarItem(title: "검색", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+        
+        setViewControllers([saved, search], animated: true)
     }
 }

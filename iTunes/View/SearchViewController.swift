@@ -77,9 +77,13 @@ private extension SearchViewController {
 // MARK: Data Bind
 private extension SearchViewController {
     func bind() {
+        let downLoadButtonTap = PublishRelay<SoftwareResult>()
+        
         let input = SearchViewModel.Input(
             searchTap: searchController.searchBar.rx.searchButtonClicked,
-            searchText: searchController.searchBar.rx.text.orEmpty)
+            searchText: searchController.searchBar.rx.text.orEmpty,
+            downloadButtonTap: downLoadButtonTap
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -87,6 +91,12 @@ private extension SearchViewController {
             output.list
                 .bind(to: tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { row, element, cell in
                     cell.configure(data: element)
+                    
+                    cell.downloadButton.rx.tap
+                        .bind { _ in
+                            downLoadButtonTap.accept(element)
+                        }
+                        .disposed(by: cell.disposeBag)
                 }
             
             tableView.rx.modelSelected(SoftwareResult.self)

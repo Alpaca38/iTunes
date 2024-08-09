@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
 
 final class SearchTableViewCell: BaseTableViewCell {
     private let appIconImageView = {
@@ -24,7 +25,7 @@ final class SearchTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    private let downloadButton = {
+    let downloadButton = {
         var config = UIButton.Configuration.gray()
         config.cornerStyle = .capsule
         config.title = "받기"
@@ -44,6 +45,13 @@ final class SearchTableViewCell: BaseTableViewCell {
     private let firstScreenshotImageView = ScreenShotImageView(frame: .zero)
     private let secondScreenshotImageView = ScreenShotImageView(frame: .zero)
     private let thirdScreenshotImageView = ScreenShotImageView(frame: .zero)
+    
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override func configureLayout() {
         contentView.addSubViews(views: [appIconImageView, titleLabel, downloadButton, starImageView, ratingLabel, sellerLabel, genreLabel, firstScreenshotImageView, secondScreenshotImageView, thirdScreenshotImageView])

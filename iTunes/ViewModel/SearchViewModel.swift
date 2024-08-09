@@ -10,12 +10,13 @@ import RxSwift
 import RxCocoa
 
 final class SearchViewModel: ViewModel {
-    private let disposeBag = DisposeBag()
-    
     private var searchList: [String] {
         get { return UserDefaultsManager.searchList }
         set { UserDefaultsManager.searchList = newValue }
     }
+    
+    private let repository = SavedSoftwareRepository()
+    private let disposeBag = DisposeBag()
     
     func transform(input: Input) -> Output {
         let appList = PublishSubject<[SoftwareResult]>()
@@ -43,10 +44,25 @@ final class SearchViewModel: ViewModel {
         
         searchTap
             .bind(with: self) { owner, value in
-                owner.searchList.append(value)
-                searchList.onNext(owner.searchList)
+                if !UserDefaultsManager.searchList.contains(value) {
+                    owner.searchList.append(value)
+                    searchList.onNext(owner.searchList)
+                }
             }
             .disposed(by: disposeBag)
+        
+        input.downloadButtonTap
+            .bind(with: self) { owner, softwareResult in
+                let data = SavedSoftware(from: softwareResult)
+                if owner.repository.itemExists(id: data.trackName) == false {
+                    owner.repository.createItem(data: data)
+                } else {
+                    print("이미 저장된 앱 입니다.")
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        repository.printRealmURL()
         
         return Output(
             list: appList,
@@ -59,6 +75,7 @@ extension SearchViewModel {
     struct Input {
         let searchTap: ControlEvent<Void>
         let searchText: ControlProperty<String>
+        let downloadButtonTap: PublishRelay<SoftwareResult>
     }
     
     struct Output {
