@@ -65,6 +65,13 @@ private extension SearchViewController {
                 .bind(to: tableView.rx.items(cellIdentifier: SearchTableViewCell.identifier, cellType: SearchTableViewCell.self)) { row, element, cell in
                     cell.configure(data: element)
                 }
+            
+            tableView.rx.modelSelected(SoftwareResult.self)
+                .bind(with: self) { owner, value in
+                    let viewModel = SearchDetailViewModel(softwareData: value)
+                    let vc = SearchDetailViewController(viewModel: viewModel)
+                    owner.navigationController?.pushViewController(vc, animated: true)
+                }
         }
     }
 }

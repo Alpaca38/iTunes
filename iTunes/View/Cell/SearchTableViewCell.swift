@@ -14,6 +14,7 @@ final class SearchTableViewCell: BaseTableViewCell {
         let view = UIImageView()
         view.layer.cornerRadius = 10
         view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
         return view
     }()
     
@@ -119,7 +120,7 @@ final class SearchTableViewCell: BaseTableViewCell {
     }
     
     func configure(data: SoftwareResult) {
-        let appIconURL = URL(string: data.artworkUrl60)
+        let appIconURL = URL(string: data.artworkUrl100)
         appIconImageView.kf.setImage(with: appIconURL)
         
         titleLabel.text = data.trackName
