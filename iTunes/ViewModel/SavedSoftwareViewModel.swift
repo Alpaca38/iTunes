@@ -11,10 +11,14 @@ import RxSwift
 final class SavedSoftwareViewModel: ViewModel {
     private let repository = SavedSoftwareRepository()
     
+    private let list = PublishSubject<[SavedSoftware]>()
+    
     func transform(input: Input) -> Output {
-        let list = BehaviorSubject<[SavedSoftware]>(value: repository.fetchAll())
-        
         return Output(list: list)
+    }
+    
+    init() {
+        setNotification()
     }
 }
 
@@ -25,5 +29,19 @@ extension SavedSoftwareViewModel {
     
     struct Output {
         let list: Observable<[SavedSoftware]>
+    }
+    
+    func setNotification() {
+        repository.setNotification { [weak self] changes in
+            guard let self else { return }
+            switch changes {
+            case .initial(_):
+                list.onNext(repository.fetchAll())
+            case .update(_, deletions: _, insertions: _, modifications: _):
+                list.onNext(repository.fetchAll())
+            case .error(let error):
+                print(error)
+            }
+        }
     }
 }
