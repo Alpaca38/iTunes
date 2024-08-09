@@ -12,13 +12,21 @@ import RxCocoa
 final class SearchViewModel: ViewModel {
     private let disposeBag = DisposeBag()
     
+    private var searchList: [String] {
+        get { return UserDefaultsManager.searchList }
+        set { UserDefaultsManager.searchList = newValue }
+    }
+    
     func transform(input: Input) -> Output {
         let appList = PublishSubject<[SoftwareResult]>()
+        let searchList = BehaviorSubject<[String]>(value: searchList)
         
-        input.searchTap
+        let searchTap = input.searchTap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .withLatestFrom(input.searchText)
             .distinctUntilChanged()
+        
+        searchTap
             .flatMap {
                 NetworkManager.shared.callAppStoreData(query: $0)
             }
@@ -33,7 +41,17 @@ final class SearchViewModel: ViewModel {
             }
             .disposed(by: disposeBag)
         
-        return Output(list: appList)
+        searchTap
+            .bind(with: self) { owner, value in
+                owner.searchList.append(value)
+                searchList.onNext(owner.searchList)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(
+            list: appList,
+            searchList: searchList
+        )
     }
 }
 
@@ -45,5 +63,6 @@ extension SearchViewModel {
     
     struct Output {
         let list: Observable<[SoftwareResult]>
+        let searchList: Observable<[String]>
     }
 }

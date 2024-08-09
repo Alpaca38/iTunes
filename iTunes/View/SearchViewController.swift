@@ -12,6 +12,15 @@ import SnapKit
 
 class SearchViewController: BaseViewController {
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    private lazy var collectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout())
+        view.showsHorizontalScrollIndicator = false
+        view.register(SearchListCollectionViewCell.self, forCellWithReuseIdentifier: SearchListCollectionViewCell.identifier)
+        self.view.addSubview(view)
+        return view
+    }()
+    
     private lazy var tableView = {
         let view = UITableView()
         view.separatorStyle = .none
@@ -30,8 +39,14 @@ class SearchViewController: BaseViewController {
     }
     
     override func configureLayout() {
+        collectionView.snp.makeConstraints {
+            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(40)
+        }
+        
         tableView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(collectionView.snp.bottom)
+            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -48,6 +63,14 @@ private extension SearchViewController {
         searchController.searchBar.placeholder = "게임, 앱, 스토리 등"
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    func layout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        return layout
     }
 }
 
@@ -71,6 +94,11 @@ private extension SearchViewController {
                     let viewModel = SearchDetailViewModel(softwareData: value)
                     let vc = SearchDetailViewController(viewModel: viewModel)
                     owner.navigationController?.pushViewController(vc, animated: true)
+                }
+            
+            output.searchList
+                .bind(to: collectionView.rx.items(cellIdentifier: SearchListCollectionViewCell.identifier, cellType: SearchListCollectionViewCell.self)) { item, element, cell in
+                    cell.configure(data: element)
                 }
         }
     }
