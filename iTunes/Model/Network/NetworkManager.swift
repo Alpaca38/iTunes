@@ -12,44 +12,41 @@ final class NetworkManager {
     private init() {}
     static let shared = NetworkManager()
     
-    func callAppStoreData(query: String) -> Observable<Software> {
+    func callAppStoreData(query: String) -> Single<Result<Software, APIError>> {
         let url = "https://itunes.apple.com/search?term=\(query)&country=kr&entity=software"
         
-        let result = Observable<Software>.create { observer in
+        return Single.create { observer in
             guard let url = URL(string: url) else {
-                observer.onError(APIError.invalidURL)
+                observer(.failure(APIError.invalidURL))
                 return Disposables.create()
             }
             
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error {
-                    observer.onError(error)
+                    observer(.success(.failure(APIError.unknownResponse)))
                 }
                 
                 guard let response = response as? HTTPURLResponse,
                       (200...299).contains(response.statusCode) else {
-                    observer.onError(APIError.statusError)
+                    observer(.success(.failure(APIError.statusError)))
                     return
                 }
                 
                 guard let data else {
-                    observer.onError(APIError.noData)
+                    observer(.success(.failure(APIError.noData)))
                     return
                 }
                 
                 guard let appData = try? JSONDecoder().decode(Software.self, from: data) else {
-                    observer.onError(APIError.decodingError)
+                    observer(.success(.failure(APIError.decodingError)))
                     return
                 }
                 
-                observer.onNext(appData)
-                observer.onCompleted()
+                observer(.success(.success(appData)))
             }
             .resume()
             
             return Disposables.create()
-        }
-        
-        return result
+        }.debug("callAppStore")
     }
 }

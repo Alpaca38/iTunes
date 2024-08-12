@@ -31,14 +31,15 @@ final class SearchViewModel: ViewModel {
             .flatMap {
                 NetworkManager.shared.callAppStoreData(query: $0)
             }
-            .subscribe(with: self) { owner, value in
-                appList.onNext(value.results)
-            } onError: { owner, error in
-                print("error - \(error)")
-            } onCompleted: { value in
-                print("completed")
-            } onDisposed: { value in
-                print("disposed")
+            .asDriver(onErrorJustReturn: (.failure(APIError.invalidURL)))
+            .debug("button tap")
+            .drive(with: self) { owner, result in
+                switch result {
+                case .success(let success):
+                    appList.onNext(success.results)
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
         

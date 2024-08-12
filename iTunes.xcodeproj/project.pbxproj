@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D11D80552C65947300EB8680 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80542C65947300EB8680 /* ViewModelType.swift */; };
+		D11D80552C65947300EB8680 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80542C65947300EB8680 /* ViewModel.swift */; };
 		D11D80572C659DEA00EB8680 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80562C659DEA00EB8680 /* SearchDetailViewController.swift */; };
 		D11D80592C65B06000EB8680 /* SearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D80582C65B06000EB8680 /* SearchDetailViewModel.swift */; };
 		D11D805B2C65D29400EB8680 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11D805A2C65D29400EB8680 /* ScreenshotCollectionViewCell.swift */; };
@@ -45,7 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D11D80542C65947300EB8680 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		D11D80542C65947300EB8680 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D11D80562C659DEA00EB8680 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewController.swift; sourceTree = "<group>"; };
 		D11D80582C65B06000EB8680 /* SearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDetailViewModel.swift; sourceTree = "<group>"; };
 		D11D805A2C65D29400EB8680 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D16D8D712C6491F800AF7677 /* ReuseIdentifier.swift */,
-				D11D80542C65947300EB8680 /* ViewModelType.swift */,
+				D11D80542C65947300EB8680 /* ViewModel.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				D11D80632C65E63200EB8680 /* UserDefaults.swift in Sources */,
 				D16D8D4E2C6485AC00AF7677 /* SceneDelegate.swift in Sources */,
 				D16D8D812C64A1FB00AF7677 /* SecondaryLabel.swift in Sources */,
-				D11D80552C65947300EB8680 /* ViewModelType.swift in Sources */,
+				D11D80552C65947300EB8680 /* ViewModel.swift in Sources */,
 				D11D80702C66018C00EB8680 /* SavedSoftwareViewModel.swift in Sources */,
 				D11D805F2C65E5A500EB8680 /* UserDefaultsManager.swift in Sources */,
 				D11D806C2C65FE2F00EB8680 /* SavedSoftwareViewController.swift in Sources */,
