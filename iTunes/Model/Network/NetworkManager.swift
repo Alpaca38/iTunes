@@ -22,7 +22,7 @@ final class NetworkManager {
             }
             
             URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error {
+                if error != nil {
                     observer(.success(.failure(APIError.unknownResponse)))
                 }
                 
@@ -47,6 +47,6 @@ final class NetworkManager {
             .resume()
             
             return Disposables.create()
-        }.debug("callAppStore")
+        }
     }
 }

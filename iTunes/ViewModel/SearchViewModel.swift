@@ -32,7 +32,6 @@ final class SearchViewModel: ViewModel {
                 NetworkManager.shared.callAppStoreData(query: $0)
             }
             .asDriver(onErrorJustReturn: (.failure(APIError.invalidURL)))
-            .debug("button tap")
             .drive(with: self) { owner, result in
                 switch result {
                 case .success(let success):

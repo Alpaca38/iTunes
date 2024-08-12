@@ -39,14 +39,13 @@ final class SavedSoftwareTableViewCell: BaseTableViewCell {
         contentView.addSubview(labelStack)
         
         appIconImageView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(20)
             $0.size.equalTo(70)
-            $0.bottom.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(20)
+            $0.centerY.equalToSuperview()
         }
         
         labelStack.snp.makeConstraints {
-            $0.top.equalTo(appIconImageView).offset(10)
-            $0.bottom.equalTo(appIconImageView).offset(-10)
+            $0.verticalEdges.equalToSuperview().inset(30)
             $0.leading.equalTo(appIconImageView.snp.trailing).offset(20)
             $0.trailing.equalToSuperview().offset(-20)
         }
